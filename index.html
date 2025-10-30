@@ -46,12 +46,7 @@
     .container { width: min(1120px, 92%); margin: 0 auto; }
 
     /* Header */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(8px);
-      background: color-mix(in oklab, rgb(var(--bg)) 80%, transparent);
-      border-bottom: 1px solid color-mix(in oklab, rgb(var(--fg)) 6%, transparent);
-    }
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: color-mix(in oklab, rgb(var(--bg)) 80%, transparent); border-bottom: 1px solid color-mix(in oklab, rgb(var(--fg)) 6%, transparent); }
     .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
     .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: 0.3px; }
     .brand-badge { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2))); box-shadow: 0 8px 20px rgba(34,197,94,0.35), inset 0 0 0 1px rgba(255,255,255,0.3); transition: transform 400ms ease; }
@@ -67,28 +62,26 @@
     .hero h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 0 0 14px; letter-spacing: -0.02em; }
     .hero p { margin: 0 auto; max-width: 820px; font-size: clamp(16px, 2.2vw, 18px); color: rgb(var(--muted)); }
 
-    /* Benefit strip */
-    .benefits { margin: 28px auto 12px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 980px; }
-    .chip { display: flex; align-items: center; gap: 8px; justify-content: center; padding: 10px 12px; border-radius: 999px; font-weight: 600; font-size: 14px; background: color-mix(in oklab, rgb(var(--fg)) 6%, transparent); border: 1px solid color-mix(in oklab, rgb(var(--fg)) 8%, transparent); opacity: 0; transform: translateY(8px); }
+    /* Divider bars */
+    .divider { position: relative; margin: 40px 0 10px; border-top: 1px solid color-mix(in oklab, rgb(var(--fg)) 12%, transparent); }
+    .divider .label { position: absolute; top: -12px; left: 0; padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: 800; letter-spacing: .06em; color: rgb(var(--muted)); background: color-mix(in oklab, rgb(var(--card)) 70%, rgb(var(--bg)) 30%); border: 1px solid color-mix(in oklab, rgb(var(--fg)) 10%, transparent); }
 
     /* Sections */
-    section.grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; padding: 28px 0; }
-    section.grid:nth-child(even) { grid-template-columns: 0.9fr 1.1fr; }
+    section.grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; padding: 24px 0; }
+    section.grid:nth-of-type(even) { grid-template-columns: 0.9fr 1.1fr; }
 
     .card { background: rgb(var(--card)); border-radius: 20px; padding: 26px; border: 1px solid color-mix(in oklab, rgb(var(--fg)) 10%, transparent); box-shadow: 0 10px 30px rgba(0,0,0,0.08); transform: translateY(8px) scale(0.99); opacity: 0; transition: transform 320ms ease, box-shadow 220ms ease, border-color 220ms ease, opacity 320ms ease; }
     .card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 16px 44px rgba(0,0,0,0.12); border-color: color-mix(in oklab, rgb(var(--ring)) 40%, transparent); }
 
-    .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; margin-bottom: 10px; }
     .title { font-size: clamp(22px, 3.2vw, 28px); margin: 4px 0 10px; line-height: 1.2; display:flex; align-items:center; gap:8px; }
     .desc { color: rgb(var(--muted)); margin: 0 0 18px; }
     .list { margin: 0; padding-left: 18px; color: rgb(var(--muted)); }
 
-    /* CTA button - premium + brilho sutil no contorno */
+    /* CTA button - premium + brilho sutil */
     .cta { --shadow: 0 6px 18px rgba(34,197,94,0.25); appearance: none; cursor: pointer; border: 0; outline: none; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 14px; font-weight: 700; font-size: 15px; color: white; background: linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2))); box-shadow: var(--shadow); transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease; will-change: transform; position: relative; overflow: hidden; }
     .cta::before { content:""; position:absolute; inset:0; border-radius:inherit; box-shadow:0 0 0 0 rgba(34,197,94,0.55), 0 0 0 0 rgba(16,185,129,0.45); opacity:0; transition: box-shadow 220ms ease, opacity 220ms ease; }
     .cta:hover { transform: translateY(-2px); filter: brightness(1.02); box-shadow: 0 10px 26px rgba(34,197,94,0.35); }
     .cta:hover::before { opacity:1; box-shadow: 0 0 8px 2px rgba(34,197,94,0.45), 0 0 14px 4px rgba(16,185,129,0.35); }
-    .cta:active::before { box-shadow: 0 0 10px 3px rgba(34,197,94,0.55), 0 0 18px 6px rgba(16,185,129,0.45); }
     .cta .icon { transition: transform 200ms ease; }
     .cta:hover .icon { transform: translateX(4px); }
 
@@ -105,10 +98,9 @@
     .sparkle:nth-child(5){ left: 66%; top: 64%; animation-delay: 3.4s; }
     @keyframes float { 0%,100% { transform: translateY(0) scale(1); opacity: 0.5; } 50% { transform: translateY(-10px) scale(1.1); opacity: 0.9; } }
 
-    /* NOVO badge + cards 4/5 highlight */
+    /* NOVO badge + cards highlight */
     .card.novo { border: 1px solid color-mix(in oklab, rgb(var(--ring)) 70%, transparent); box-shadow: 0 0 20px rgba(34,197,94,0.30), 0 0 34px rgba(16,185,129,0.28); transition: box-shadow 300ms ease, transform 300ms ease; }
     .card.novo:hover { box-shadow: 0 0 28px rgba(34,197,94,0.45), 0 0 44px rgba(16,185,129,0.40); transform: translateY(-3px) scale(1.01); }
-
     .badge-novo { display: inline-block; padding: 4px 10px; font-size: 12px; font-weight: 800; line-height: 1; color: white; border-radius: 10px; background: linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2))); box-shadow: 0 2px 10px rgba(16, 185, 129, 0.5), 0 0 0 1px color-mix(in oklab, rgb(var(--ring)) 40%, transparent); letter-spacing: .06em; will-change: box-shadow, filter; animation: pulseBadge 3.2s ease-in-out infinite; }
     @keyframes pulseBadge { 0%, 100% { box-shadow: 0 0 10px rgba(16,185,129,0.45), 0 0 0 1px color-mix(in oklab, rgb(var(--ring)) 40%, transparent); filter: brightness(1); } 50% { box-shadow: 0 0 22px rgba(34,197,94,0.75), 0 0 0 1px color-mix(in oklab, rgb(var(--ring)) 60%, transparent); filter: brightness(1.03); } }
 
@@ -118,7 +110,7 @@
     /* Responsive */
     @media (max-width: 920px) {
       .benefits { grid-template-columns: 1fr; }
-      section.grid, section.grid:nth-child(even) { grid-template-columns: 1fr; }
+      section.grid { grid-template-columns: 1fr; }
       .hero { padding: 56px 0 10px; }
       .nav a { padding: 10px 8px; }
     }
@@ -139,11 +131,9 @@
         <span class="brand-text">Felipe_Planilhas</span>
       </div>
       <nav style="display:flex; gap:18px">
-        <a href="#simulador">Simulador</a>
-        <a href="#controle-2025">Controle 2025</a>
-        <a href="#assinaturas">Assinaturas</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#empresarial">Empresarial</a>
+        <a href="#pessoais">Pessoais</a>
+        <a href="#empresas">Empresas</a>
+        <a href="#mistas">Mistas</a>
       </nav>
     </div>
   </header>
@@ -173,46 +163,16 @@
       </div>
     </section>
 
-    <!-- Planilha 1: Simulador de Investimentos -->
-    <section id="simulador" class="grid" aria-labelledby="simulador-titulo">
-      <div class="card">
-        <div class="eyebrow">Planilha 1</div>
-        <h2 id="simulador-titulo" class="title">Simulador de Investimentos</h2>
-        <p class="desc">Projete seus resultados com diferentes aportes, prazos e taxas. Visualize o crescimento do seu patrimônio e compare cenários em segundos.</p>
-        <ul class="list">
-          <li>Simulações rápidas e comparativas lado a lado.</li>
-          <li>Foco em metas: veja quando e como chegar nelas.</li>
-          <li>Interface objetiva para decisões sem ruído.</li>
-        </ul>
-        <p style="margin-top:18px">
-          <a class="cta" href="https://go.hotmart.com/H102363171G" target="_blank" rel="noopener noreferrer" aria-label="Abrir Simulador de Investimentos (abre em nova aba)">
-            Acessar o Simulador
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </p>
-      </div>
-      <div class="preview" aria-hidden="true">
-        <div class="gridlines"></div>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-      </div>
-    </section>
+    <!-- ========= Planilhas_Pessoais ========= -->
+    <div class="divider" id="pessoais"><span class="label">Planilhas_Pessoais</span></div>
 
-    <!-- Planilha 2: Controle Financeiro 2025 -->
+    <!-- Controle 2025 -->
     <section id="controle-2025" class="grid" aria-labelledby="controle-titulo">
       <div class="preview" aria-hidden="true">
         <div class="gridlines"></div>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
       </div>
       <div class="card">
-        <div class="eyebrow">Planilha 2</div>
         <h2 id="controle-titulo" class="title">Controle Financeiro 2025</h2>
         <p class="desc">Domine sua rotina de dinheiro com um controle mensal de 2025, e veja tudo com que gastou no ano e como pode economizar para festas e urgências. Entradas, saídas, categorias e visão clara do que importa.</p>
         <ul class="list">
@@ -220,19 +180,13 @@
           <li>Controle de categorias para entender onde o dinheiro vai.</li>
           <li>Indicadores simples que orientam sua próxima ação.</li>
         </ul>
-        <p style="margin-top:18px">
-          <a class="cta" href="https://go.hotmart.com/K102477887D" target="_blank" rel="noopener noreferrer" aria-label="Abrir Controle Financeiro 2025 (abre em nova aba)">
-            Ir para o Controle 2025
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/K102477887D" target="_blank" rel="noopener" aria-label="Abrir Controle Financeiro 2025">Ir para o Controle 2025 <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
     </section>
 
-    <!-- Planilha 3: Controle de Assinaturas -->
+    <!-- Assinaturas -->
     <section id="assinaturas" class="grid" aria-labelledby="assinaturas-titulo">
       <div class="card">
-        <div class="eyebrow">Planilha 3</div>
         <h2 id="assinaturas-titulo" class="title">Controle de Assinaturas</h2>
         <p class="desc">Chega de surpresa no cartão. Saiba quanto, quando e por quê você paga cada serviço — e corte o que não faz sentido.</p>
         <ul class="list">
@@ -240,76 +194,90 @@
           <li>Alertas visuais para evitar gastos.</li>
           <li>Visão mensal e anual para planejar sem sustos.</li>
         </ul>
-        <p style="margin-top:18px">
-          <a class="cta" href="https://go.hotmart.com/G102493081F" target="_blank" rel="noopener noreferrer" aria-label="Abrir Planilha de Controle de Assinaturas (abre em nova aba)">
-            Gerenciar Assinaturas
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/G102493081F" target="_blank" rel="noopener" aria-label="Abrir Planilha de Assinaturas">Gerenciar Assinaturas <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
       <div class="preview" aria-hidden="true">
         <div class="gridlines"></div>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
       </div>
     </section>
 
-    <!-- Planilha 4: Planilha de Projetos (atualizada) -->
-    <section id="projetos" class="grid" aria-labelledby="projetos-titulo">
+    <!-- Sonhos (NOVO) -->
+    <section id="sonhos" class="grid" aria-labelledby="sonhos-titulo">
       <div class="preview" aria-hidden="true">
         <div class="gridlines"></div>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
       </div>
       <div class="card novo">
-        <div class="eyebrow">Planilha 4</div>
-        <h2 id="projetos-titulo" class="title">Planilha de Projetos <span class="badge-novo" aria-label="Novo">NOVO</span></h2>
-        <p class="desc">Gerencie prazos, progresso e entregas com eficiência total. Visualize o andamento de cada projeto em um dashboard automático e mantenha tudo sob controle com elegância.</p>
+        <h2 id="sonhos-titulo" class="title">Planilha de Sonhos <span class="badge-novo">NOVO</span></h2>
+        <p class="desc">Acompanhe seus objetivos com clareza e motivação.
+        Visualize o progresso de cada meta e veja quais estão mais próximas de se realizar — tudo em um painel automático e inspirador.</p>
         <ul class="list">
-          <li>Indicadores visuais de status e desempenho.</li>
-          <li>Cálculos automáticos de progresso e prazos.</li>
-          <li>Interface moderna e fácil de entender.</li>
+          <li>Progresso automático: veja a evolução dos seus sonhos em tempo real.</li>
+          <li>Top 3 metas mais próximas: foco no que está prestes a se tornar realidade.</li>
+          <li>Gráfico de crescimento mensal: acompanhe sua trajetória ao longo do tempo.</li>
         </ul>
-        <p style="margin-top:18px">
-          <a class="cta" href="https://go.hotmart.com/A102611777M" target="_blank" rel="noopener noreferrer" aria-label="Abrir Planilha de Projetos (abre em nova aba)">
-            Organizar Projetos
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/N102680787L" target="_blank" rel="noopener" aria-label="Abrir Planilha de Sonhos">Começar meus Sonhos <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
     </section>
 
-    <!-- Planilha 5: Planilha Empresarial Avançada (atualizada) -->
+    <!-- ========= Planilhas_Empresas ========= -->
+    <div class="divider" id="empresas"><span class="label">Planilhas_Empresas</span></div>
+
+    <!-- Controle Empresarial Avançado (NOVO) -->
     <section id="empresarial" class="grid" aria-labelledby="empresarial-titulo">
       <div class="card novo">
-        <div class="eyebrow">Planilha 5</div>
-        <h2 id="empresarial-titulo" class="title">Planilha Empresarial Avançada <span class="badge-novo" aria-label="Novo">NOVO</span></h2>
+        <h2 id="empresarial-titulo" class="title">Controle Empresarial Avançado <span class="badge-novo">NOVO</span></h2>
         <p class="desc">Gerencie oportunidades, acompanhe resultados e visualize o progresso da sua equipe em um só lugar. Com design profissional e cálculos automáticos, transforme dados em decisões reais.</p>
         <ul class="list">
           <li>CRM completo com metas e painel interativo.</li>
           <li>Indicadores automáticos de receita, margem e desempenho.</li>
           <li>Visual moderno e intuitivo para uso imediato.</li>
         </ul>
-        <p style="margin-top:18px">
-          <a class="cta" href="https://go.hotmart.com/N102639401I" target="_blank" rel="noopener noreferrer" aria-label="Abrir Planilha Empresarial Avançada (abre em nova aba)">
-            Ver versão Empresarial
-            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/N102639401I" target="_blank" rel="noopener" aria-label="Abrir Controle Empresarial Avançado">Ver versão Empresarial <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
       <div class="preview" aria-hidden="true">
         <div class="gridlines"></div>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
-        <span class="sparkle"></span>
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+      </div>
+    </section>
+
+    <!-- ========= Planilhas_Mistas ========= -->
+    <div class="divider" id="mistas"><span class="label">Planilhas_Mistas</span></div>
+
+    <!-- Simulador de Investimentos -->
+    <section id="simulador" class="grid" aria-labelledby="simulador-titulo">
+      <div class="card">
+        <h2 id="simulador-titulo" class="title">Simulador de Investimentos</h2>
+        <p class="desc">Projete seus resultados com diferentes aportes, prazos e taxas. Visualize o crescimento do seu patrimônio e compare cenários em segundos.</p>
+        <ul class="list">
+          <li>Simulações rápidas e comparativas lado a lado.</li>
+          <li>Foco em metas: veja quando e como chegar nelas.</li>
+          <li>Interface objetiva para decisões sem ruído.</li>
+        </ul>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/H102363171G" target="_blank" rel="noopener" aria-label="Abrir Simulador de Investimentos">Acessar o Simulador <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+      </div>
+      <div class="preview" aria-hidden="true">
+        <div class="gridlines"></div>
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+      </div>
+    </section>
+
+    <!-- Controle de Projetos (NOVO) -->
+    <section id="projetos" class="grid" aria-labelledby="projetos-titulo">
+      <div class="preview" aria-hidden="true">
+        <div class="gridlines"></div>
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+      </div>
+      <div class="card novo">
+        <h2 id="projetos-titulo" class="title">Controle de Projetos <span class="badge-novo">NOVO</span></h2>
+        <p class="desc">Gerencie prazos, progresso e entregas com eficiência total. Visualize o andamento de cada projeto em um dashboard automático e mantenha tudo sob controle com elegância.</p>
+        <ul class="list">
+          <li>Indicadores visuais de status e desempenho.</li>
+          <li>Cálculos automáticos de progresso e prazos.</li>
+          <li>Interface moderna e fácil de entender.</li>
+        </ul>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/A102611777M" target="_blank" rel="noopener" aria-label="Abrir Controle de Projetos">Organizar Projetos <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
     </section>
 
@@ -322,30 +290,34 @@
 
   <script>
     // Intersection Observer para revelar elementos ao rolar
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-    }, { threshold: 0.18 });
+    const io = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); }); }, { threshold: 0.18 });
     document.querySelectorAll('.card, .preview, .chip').forEach(el => io.observe(el));
 
     // Scroll spy simples para destacar link ativo no header
     const sections = [
-      { id: '#simulador', link: document.querySelector('a[href="#simulador"]') },
-      { id: '#controle-2025', link: document.querySelector('a[href="#controle-2025"]') },
-      { id: '#assinaturas', link: document.querySelector('a[href="#assinaturas"]') },
-      { id: '#projetos', link: document.querySelector('a[href="#projetos"]') },
-      { id: '#empresarial', link: document.querySelector('a[href="#empresarial"]') }
+      { id: '#pessoais', link: document.querySelector('a[href="#pessoais"]') },
+      { id: '#empresas', link: document.querySelector('a[href="#empresas"]') },
+      { id: '#mistas', link: document.querySelector('a[href="#mistas"]') },
+      { id: '#controle-2025', link: null },
+      { id: '#assinaturas', link: null },
+      { id: '#sonhos', link: null },
+      { id: '#empresarial', link: null },
+      { id: '#simulador', link: null },
+      { id: '#projetos', link: null }
     ];
+
     const spy = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const item = sections.find(s => s.id === '#' + entry.target.id);
-        if (!item) return;
+        if (!item || !item.link) return;
         if (entry.isIntersecting) {
           sections.forEach(s => s.link && s.link.classList.remove('active'));
           item.link && item.link.classList.add('active');
           item.link && item.link.setAttribute('aria-current', 'page');
         }
       });
-    }, { threshold: 0.55 });
+    }, { threshold: 0.35 });
+
     sections.forEach(s => { const el = document.querySelector(s.id); if (el) spy.observe(el); });
   </script>
 </body>
