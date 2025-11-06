@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Felipe_Planilhas — HUB</title>
+  <title>felipe_planilhas — HUB</title>
   <meta name="description" content="HUB oficial das planilhas do Felipe: organize sua vida financeira com praticidade, clareza e rapidez." />
   <meta name="color-scheme" content="light dark" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,125 +11,93 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: 245 245 248;
-      --fg: 20 22 26;
-      --muted: 95 99 110;
-      --brand-1: 34 197 94;  /* verde */
-      --brand-2: 16 185 129; /* teal/verde */
-      --card: 255 255 255;
-      --ring: 34 197 94;
+      --bg: 0 20 10;               /* fundo verde escuro */
+      --fg: 235 236 240;           /* texto claro */
+      --muted: 180 185 190;        /* texto secundário */
+      --brand-1: 34 197 94;        /* verde */
+      --brand-2: 16 185 129;       /* teal */
+      --card: 25 30 25;            /* cards escuros */
+      --ring: 34 197 94;           /* cor de foco */
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: 9 10 12;
-        --fg: 235 236 240;
-        --muted: 150 153 161;
-        --card: 20 22 26;
-      }
+    /* Base */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; line-height:1.6;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:rgb(var(--fg));
+      background: radial-gradient(1200px 800px at 80% -20%, rgba(34,197,94,0.10), transparent 60%),
+                  radial-gradient(1000px 600px at -20% 120%, rgba(16,185,129,0.10), transparent 60%),
+                  linear-gradient(180deg, rgb(0,40,20) 0%, rgb(0,0,0) 100%);
     }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: rgb(var(--fg));
-      background: radial-gradient(1200px 800px at 80% -20%, rgba(34,197,94,0.12), transparent 60%),
-                  radial-gradient(1000px 600px at -20% 120%, rgba(16,185,129,0.12), transparent 60%),
-                  rgb(var(--bg));
-      line-height: 1.6;
-      color-scheme: light dark;
-    }
-
-    .container { width: min(1120px, 92%); margin: 0 auto; }
+    .container{width:min(1120px,92%);margin:0 auto}
 
     /* Header */
-    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: color-mix(in oklab, rgb(var(--bg)) 80%, transparent); border-bottom: 1px solid color-mix(in oklab, rgb(var(--fg)) 6%, transparent); }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: 0.3px; }
-    .brand-badge { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2))); box-shadow: 0 8px 20px rgba(34,197,94,0.35), inset 0 0 0 1px rgba(255,255,255,0.3); transition: transform 400ms ease; }
-    .brand-badge:hover { transform: rotate(8deg) scale(1.05); }
-    .brand-text { background: linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2)) 60%); -webkit-background-clip: text; background-clip: text; color: transparent; background-size: 200% 200%; animation: sheen 6s ease-in-out infinite; }
-    @keyframes sheen { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-    .nav a { color: inherit; text-decoration: none; font-weight: 600; opacity: 0.8; padding: 8px 6px; border-radius: 8px; transition: background-color 160ms ease, opacity 160ms ease; }
-    .nav a:hover { opacity: 1; background: color-mix(in oklab, rgb(var(--fg)) 6%, transparent); }
-    .nav a.active { opacity: 1; outline: 2px solid color-mix(in oklab, rgb(var(--ring)) 40%, transparent); outline-offset: 2px; }
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:rgba(0,0,0,0.6);border-bottom:1px solid rgba(255,255,255,0.1)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{font-weight:800;letter-spacing:.3px;text-transform:lowercase;background:linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2)) 60%);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 200%;animation:sheen 6s ease-in-out infinite}
+    @keyframes sheen{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .nav a{color:inherit;text-decoration:none;font-weight:600;opacity:.85;padding:8px 6px;border-radius:8px;transition:background-color .16s ease,opacity .16s ease}
+    .nav a:hover{opacity:1;background:rgba(255,255,255,0.08)}
+    .nav a.active{outline:2px solid rgba(34,197,94,0.4);outline-offset:2px}
 
     /* Hero */
-    .hero { padding: 72px 0 36px; text-align: center; }
-    .hero h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 0 0 14px; letter-spacing: -0.02em; }
-    .hero p { margin: 0 auto; max-width: 820px; font-size: clamp(16px, 2.2vw, 18px); color: rgb(var(--muted)); }
+    .hero{padding:72px 0 36px;text-align:center}
+    .hero h1{font-size:clamp(32px,6vw,56px);line-height:1.05;margin:0 0 14px;letter-spacing:-.02em}
+    .hero p{margin:0 auto;max-width:820px;font-size:clamp(16px,2.2vw,18px);color:rgb(var(--muted))}
 
-    /* Divider bars */
-    .divider { position: relative; margin: 40px 0 10px; border-top: 1px solid color-mix(in oklab, rgb(var(--fg)) 12%, transparent); }
-    .divider .label { position: absolute; top: -12px; left: 0; padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: 800; letter-spacing: .06em; color: rgb(var(--muted)); background: color-mix(in oklab, rgb(var(--card)) 70%, rgb(var(--bg)) 30%); border: 1px solid color-mix(in oklab, rgb(var(--fg)) 10%, transparent); }
+    /* Dividers (categorias) */
+    .divider{position:relative;margin:40px 0 10px;border-top:1px solid rgba(255,255,255,0.18)}
+    .divider .label{position:absolute;top:-12px;left:0;padding:4px 10px;border-radius:10px;font-size:12px;font-weight:800;letter-spacing:.06em;color:rgb(var(--muted));background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.14)}
 
-    /* Sections */
-    section.grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; padding: 24px 0; }
-    section.grid:nth-of-type(even) { grid-template-columns: 0.9fr 1.1fr; }
+    /* Grid seções */
+    section.grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;align-items:center;padding:24px 0}
+    section.grid:nth-of-type(even){grid-template-columns:0.9fr 1.1fr}
 
-    .card { background: rgb(var(--card)); border-radius: 20px; padding: 26px; border: 1px solid color-mix(in oklab, rgb(var(--fg)) 10%, transparent); box-shadow: 0 10px 30px rgba(0,0,0,0.08); transform: translateY(8px) scale(0.99); opacity: 0; transition: transform 320ms ease, box-shadow 220ms ease, border-color 220ms ease, opacity 320ms ease; }
-    .card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 16px 44px rgba(0,0,0,0.12); border-color: color-mix(in oklab, rgb(var(--ring)) 40%, transparent); }
+    /* Cards */
+    .card{background:rgb(var(--card));border-radius:20px;padding:26px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 10px 30px rgba(0,0,0,.5);color:rgb(var(--fg));transform:translateY(8px) scale(.99);opacity:0;transition:transform .32s ease,box-shadow .22s ease,border-color .22s ease,opacity .32s ease}
+    .card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 16px 44px rgba(0,0,0,.6);border-color:rgba(34,197,94,0.35)}
+    .title{font-size:clamp(22px,3.2vw,28px);margin:4px 0 10px;line-height:1.2;display:flex;align-items:center;gap:8px}
+    .desc{color:rgb(var(--muted));margin:0 0 18px}
+    .list{margin:0;padding-left:18px;color:rgb(var(--muted))}
 
-    .title { font-size: clamp(22px, 3.2vw, 28px); margin: 4px 0 10px; line-height: 1.2; display:flex; align-items:center; gap:8px; }
-    .desc { color: rgb(var(--muted)); margin: 0 0 18px; }
-    .list { margin: 0; padding-left: 18px; color: rgb(var(--muted)); }
+    /* CTA */
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:14px;font-weight:700;font-size:15px;color:#fff;background:linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2)));box-shadow:0 6px 18px rgba(34,197,94,.25);transition:transform .16s ease,filter .16s ease,box-shadow .16s ease}
+    .cta:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 10px 26px rgba(34,197,94,.4)}
+    .icon{transition:transform .2s ease}
+    .cta:hover .icon{transform:translateX(4px)}
 
-    /* CTA button - premium + brilho sutil */
-    .cta { --shadow: 0 6px 18px rgba(34,197,94,0.25); appearance: none; cursor: pointer; border: 0; outline: none; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 14px; font-weight: 700; font-size: 15px; color: white; background: linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2))); box-shadow: var(--shadow); transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease; will-change: transform; position: relative; overflow: hidden; }
-    .cta::before { content:""; position:absolute; inset:0; border-radius:inherit; box-shadow:0 0 0 0 rgba(34,197,94,0.55), 0 0 0 0 rgba(16,185,129,0.45); opacity:0; transition: box-shadow 220ms ease, opacity 220ms ease; }
-    .cta:hover { transform: translateY(-2px); filter: brightness(1.02); box-shadow: 0 10px 26px rgba(34,197,94,0.35); }
-    .cta:hover::before { opacity:1; box-shadow: 0 0 8px 2px rgba(34,197,94,0.45), 0 0 14px 4px rgba(16,185,129,0.35); }
-    .cta .icon { transition: transform 200ms ease; }
-    .cta:hover .icon { transform: translateX(4px); }
+    /* Preview decorativo */
+    .preview{position:relative;overflow:hidden;border-radius:20px;border:1px solid rgba(255,255,255,0.08);height:320px;background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.0)),repeating-linear-gradient(90deg, transparent 0 38px, rgba(255,255,255,0.06) 38px 39px),linear-gradient(135deg, rgba(34,197,94,0.22), rgba(16,185,129,0.18));box-shadow:inset 0 40px 80px rgba(0,0,0,0.25);transform:translateY(8px) scale(.99);opacity:0;transition:transform .42s ease,opacity .42s ease}
+    .gridlines{position:absolute;inset:0;background:linear-gradient(transparent,transparent 31px,rgba(255,255,255,.25) 31px,rgba(255,255,255,.25) 32px),linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.25) 39px,rgba(255,255,255,.25) 40px);background-size:32px 32px,40px 40px;opacity:.45;mix-blend-mode:overlay}
+    .sparkle{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff;opacity:.6;filter:blur(.4px);animation:float 8s ease-in-out infinite;box-shadow:0 0 18px rgba(255,255,255,.7)}
+    .sparkle:nth-child(1){left:12%;top:22%;animation-delay:.2s}
+    .sparkle:nth-child(2){left:48%;top:34%;animation-delay:1.2s}
+    .sparkle:nth-child(3){left:78%;top:18%;animation-delay:2.0s}
+    .sparkle:nth-child(4){left:30%;top:70%;animation-delay:2.8s}
+    .sparkle:nth-child(5){left:66%;top:64%;animation-delay:3.4s}
+    @keyframes float{0%,100%{transform:translateY(0) scale(1);opacity:.5}50%{transform:translateY(-10px) scale(1.1);opacity:.9}}
 
-    /* Decorative preview */
-    .preview { position: relative; overflow: hidden; border-radius: 20px; border: 1px solid color-mix(in oklab, rgb(var(--fg)) 10%, transparent); height: 320px; background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.0)), repeating-linear-gradient(90deg, transparent 0 38px, rgba(255,255,255,0.05) 38px 39px), linear-gradient(135deg, rgba(34,197,94,0.25), rgba(16,185,129,0.2)); box-shadow: inset 0 40px 80px rgba(0,0,0,0.07); transform: translateY(8px) scale(0.99); opacity: 0; transition: transform 420ms ease, opacity 420ms ease; }
-    .gridlines { position: absolute; inset: 0; background: linear-gradient(transparent, transparent 31px, rgba(255,255,255,0.25) 31px, rgba(255,255,255,0.25) 32px), linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.25) 39px, rgba(255,255,255,0.25) 40px); background-size: 32px 32px, 40px 40px; opacity: 0.45; mix-blend-mode: overlay; }
-
-    /* Sparkles */
-    .sparkle { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: white; opacity: 0.6; filter: blur(0.4px); animation: float 8s ease-in-out infinite; box-shadow: 0 0 18px rgba(255,255,255,0.7); }
-    .sparkle:nth-child(1){ left: 12%; top: 22%; animation-delay: 0.2s; }
-    .sparkle:nth-child(2){ left: 48%; top: 34%; animation-delay: 1.2s; }
-    .sparkle:nth-child(3){ left: 78%; top: 18%; animation-delay: 2.0s; }
-    .sparkle:nth-child(4){ left: 30%; top: 70%; animation-delay: 2.8s; }
-    .sparkle:nth-child(5){ left: 66%; top: 64%; animation-delay: 3.4s; }
-    @keyframes float { 0%,100% { transform: translateY(0) scale(1); opacity: 0.5; } 50% { transform: translateY(-10px) scale(1.1); opacity: 0.9; } }
-
-    /* NOVO badge + cards highlight */
-    .card.novo { border: 1px solid color-mix(in oklab, rgb(var(--ring)) 70%, transparent); box-shadow: 0 0 20px rgba(34,197,94,0.30), 0 0 34px rgba(16,185,129,0.28); transition: box-shadow 300ms ease, transform 300ms ease; }
-    .card.novo:hover { box-shadow: 0 0 28px rgba(34,197,94,0.45), 0 0 44px rgba(16,185,129,0.40); transform: translateY(-3px) scale(1.01); }
-    .badge-novo { display: inline-block; padding: 4px 10px; font-size: 12px; font-weight: 800; line-height: 1; color: white; border-radius: 10px; background: linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2))); box-shadow: 0 2px 10px rgba(16, 185, 129, 0.5), 0 0 0 1px color-mix(in oklab, rgb(var(--ring)) 40%, transparent); letter-spacing: .06em; will-change: box-shadow, filter; animation: pulseBadge 3.2s ease-in-out infinite; }
-    @keyframes pulseBadge { 0%, 100% { box-shadow: 0 0 10px rgba(16,185,129,0.45), 0 0 0 1px color-mix(in oklab, rgb(var(--ring)) 40%, transparent); filter: brightness(1); } 50% { box-shadow: 0 0 22px rgba(34,197,94,0.75), 0 0 0 1px color-mix(in oklab, rgb(var(--ring)) 60%, transparent); filter: brightness(1.03); } }
+    /* Badge NOVO (só para Compacto) */
+    .badge-novo{display:inline-block;padding:4px 10px;font-size:12px;font-weight:800;line-height:1;color:#fff;border-radius:10px;background:linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2)));box-shadow:0 2px 10px rgba(16,185,129,.5),0 0 0 1px rgba(34,197,94,.5);letter-spacing:.06em}
 
     /* Reveal on scroll */
-    .is-visible { opacity: 1 !important; transform: translateY(0) scale(1) !important; }
+    .is-visible{opacity:1 !important;transform:translateY(0) scale(1) !important}
 
-    /* Responsive */
-    @media (max-width: 920px) {
-      .benefits { grid-template-columns: 1fr; }
-      section.grid { grid-template-columns: 1fr; }
-      .hero { padding: 56px 0 10px; }
-      .nav a { padding: 10px 8px; }
-    }
+    /* Responsivo */
+    @media (max-width:920px){section.grid, section.grid:nth-of-type(even){grid-template-columns:1fr}.hero{padding:56px 0 10px}.nav a{padding:10px 8px}}
 
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .cta, .card, .sparkle, .preview, .chip, .brand-badge, .brand-text, .badge-novo { transition: none !important; animation: none !important; }
-    }
+    /* Acessibilidade: reduzir movimento */
+    @media (prefers-reduced-motion:reduce){.cta,.card,.sparkle,.preview,.brand{transition:none!important;animation:none!important}}
 
-    footer { margin: 42px 0 24px; text-align: center; color: rgb(var(--muted)); font-size: 14px; }
+    footer{margin:42px 0 24px;text-align:center;color:rgb(var(--muted));font-size:14px}
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">
-        <span class="brand-badge" aria-hidden="true"></span>
-        <span class="brand-text">Felipe_Planilhas</span>
-      </div>
+      <div class="brand">felipe_planilhas</div>
       <nav style="display:flex; gap:18px">
         <a href="#pessoais">Pessoais</a>
         <a href="#empresas">Empresas</a>
@@ -139,31 +107,13 @@
   </header>
 
   <main class="container">
+    <!-- Hero -->
     <section class="hero" aria-labelledby="titulo">
       <h1 id="titulo">Organização que dá <span style="background:linear-gradient(135deg, rgb(var(--brand-1)), rgb(var(--brand-2))); -webkit-background-clip:text; background-clip:text; color:transparent;">resultado</span></h1>
-      <p>
-        Bem-vindo ao HUB <strong>Felipe_Planilhas</strong>. Aqui você encontra ferramentas simples e poderosas para organizar suas finanças sem sofrimento.
-        Planilhas bem pensadas economizam tempo, diminuem a ansiedade e te ajudam a tomar decisões com clareza.
-        É como ter um painel de controle da sua vida financeira — prático, bonito e no seu ritmo.
-      </p>
-
-      <div class="benefits" aria-label="Benefícios de usar planilhas">
-        <div class="chip">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Clareza imediata dos números
-        </div>
-        <div class="chip">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 8v8m-4-4h8M21 12a9 9 0 11-18 0 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Decisões melhores, sem adivinhação
-        </div>
-        <div class="chip">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 6v6l4 2M21 12a9 9 0 11-18 0 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Menos tempo controlando, mais vivendo
-        </div>
-      </div>
+      <p>Bem-vindo ao HUB <strong>felipe_planilhas</strong>. Aqui você encontra ferramentas simples e poderosas para organizar suas finanças sem sofrimento. Planilhas bem pensadas economizam tempo, diminuem a ansiedade e te ajudam a tomar decisões com clareza.</p>
     </section>
 
-    <!-- ========= Planilhas_Pessoais ========= -->
+    <!-- ================= Planilhas_Pessoais ================= -->
     <div class="divider" id="pessoais"><span class="label">Planilhas_Pessoais</span></div>
 
     <!-- Controle 2025 -->
@@ -174,13 +124,13 @@
       </div>
       <div class="card">
         <h2 id="controle-titulo" class="title">Controle Financeiro 2025</h2>
-        <p class="desc">Domine sua rotina de dinheiro com um controle mensal de 2025, e veja tudo com que gastou no ano e como pode economizar para festas e urgências. Entradas, saídas, categorias e visão clara do que importa.</p>
+        <p class="desc">Domine sua rotina de dinheiro com um controle mensal de 2025 e veja tudo com que gastou no ano. Entradas, saídas, categorias e visão clara do que importa.</p>
         <ul class="list">
           <li>Resumo mensal com o essencial à vista.</li>
           <li>Controle de categorias para entender onde o dinheiro vai.</li>
           <li>Indicadores simples que orientam sua próxima ação.</li>
         </ul>
-        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/K102477887D" target="_blank" rel="noopener" aria-label="Abrir Controle Financeiro 2025">Ir para o Controle 2025 <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/K102477887D" target="_blank" rel="noopener">Ir para o Controle 2025 <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
     </section>
 
@@ -194,7 +144,7 @@
           <li>Alertas visuais para evitar gastos.</li>
           <li>Visão mensal e anual para planejar sem sustos.</li>
         </ul>
-        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/G102493081F" target="_blank" rel="noopener" aria-label="Abrir Planilha de Assinaturas">Gerenciar Assinaturas <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/G102493081F" target="_blank" rel="noopener">Gerenciar Assinaturas <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
       <div class="preview" aria-hidden="true">
         <div class="gridlines"></div>
@@ -202,39 +152,38 @@
       </div>
     </section>
 
-    <!-- Sonhos (NOVO) -->
+    <!-- Sonhos -->
     <section id="sonhos" class="grid" aria-labelledby="sonhos-titulo">
       <div class="preview" aria-hidden="true">
         <div class="gridlines"></div>
         <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
       </div>
-      <div class="card novo">
-        <h2 id="sonhos-titulo" class="title">Planilha de Sonhos <span class="badge-novo">NOVO</span></h2>
-        <p class="desc">Acompanhe seus objetivos com clareza e motivação.
-        Visualize o progresso de cada meta e veja quais estão mais próximas de se realizar — tudo em um painel automático e inspirador.</p>
+      <div class="card">
+        <h2 id="sonhos-titulo" class="title">Planilha de Sonhos</h2>
+        <p class="desc">Acompanhe seus objetivos com clareza e motivação. Visualize o progresso de cada meta e veja quais estão mais próximas de se realizar — tudo em um painel automático e inspirador.</p>
         <ul class="list">
-          <li>Progresso automático: veja a evolução dos seus sonhos em tempo real.</li>
-          <li>Top 3 metas mais próximas: foco no que está prestes a se tornar realidade.</li>
-          <li>Gráfico de crescimento mensal: acompanhe sua trajetória ao longo do tempo.</li>
+          <li>Progresso automático em tempo real.</li>
+          <li>Top 3 metas mais próximas para foco.</li>
+          <li>Gráfico de crescimento mensal.</li>
         </ul>
-        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/N102680787L" target="_blank" rel="noopener" aria-label="Abrir Planilha de Sonhos">Começar meus Sonhos <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/N102680787L" target="_blank" rel="noopener">Começar meus Sonhos <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
     </section>
 
-    <!-- ========= Planilhas_Empresas ========= -->
+    <!-- ================= Planilhas_Empresas ================= -->
     <div class="divider" id="empresas"><span class="label">Planilhas_Empresas</span></div>
 
-    <!-- Controle Empresarial Avançado (NOVO) -->
+    <!-- Empresarial Avançado -->
     <section id="empresarial" class="grid" aria-labelledby="empresarial-titulo">
-      <div class="card novo">
-        <h2 id="empresarial-titulo" class="title">Controle Empresarial Avançado <span class="badge-novo">NOVO</span></h2>
+      <div class="card">
+        <h2 id="empresarial-titulo" class="title">Controle Empresarial Avançado</h2>
         <p class="desc">Gerencie oportunidades, acompanhe resultados e visualize o progresso da sua equipe em um só lugar. Com design profissional e cálculos automáticos, transforme dados em decisões reais.</p>
         <ul class="list">
           <li>CRM completo com metas e painel interativo.</li>
           <li>Indicadores automáticos de receita, margem e desempenho.</li>
           <li>Visual moderno e intuitivo para uso imediato.</li>
         </ul>
-        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/N102639401I" target="_blank" rel="noopener" aria-label="Abrir Controle Empresarial Avançado">Ver versão Empresarial <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/N102639401I" target="_blank" rel="noopener">Ver versão Empresarial <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
       <div class="preview" aria-hidden="true">
         <div class="gridlines"></div>
@@ -242,7 +191,25 @@
       </div>
     </section>
 
-    <!-- ========= Planilhas_Mistas ========= -->
+    <!-- Empresarial Compacto (NOVO) -->
+    <section id="compacto" class="grid" aria-labelledby="compacto-titulo">
+      <div class="preview" aria-hidden="true">
+        <div class="gridlines"></div>
+        <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+      </div>
+      <div class="card" style="border:1px solid rgba(34,197,94,0.6); box-shadow:0 0 20px rgba(34,197,94,0.35)">
+        <h2 id="compacto-titulo" class="title">Controle Empresarial Compacto <span class="badge-novo">NOVO</span></h2>
+        <p class="desc">Simplifique a gestão da sua empresa em uma única tela. Acompanhe receitas, despesas e lucro com clareza e veja seus resultados crescerem sem fórmulas complicadas. Feito para MEIs, autônomos e prestadores que valorizam praticidade e visual impecável.</p>
+        <ul class="list">
+          <li>Painel principal com tudo à vista.</li>
+          <li>Categorias automáticas e cálculo de lucro instantâneo.</li>
+          <li>Indicadores e gráfico prontos para análise e apresentação.</li>
+        </ul>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/R102814400R" target="_blank" rel="noopener">Acessar Planilha Compacta <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+      </div>
+    </section>
+
+    <!-- ================= Planilhas_Mistas ================= -->
     <div class="divider" id="mistas"><span class="label">Planilhas_Mistas</span></div>
 
     <!-- Simulador de Investimentos -->
@@ -255,7 +222,7 @@
           <li>Foco em metas: veja quando e como chegar nelas.</li>
           <li>Interface objetiva para decisões sem ruído.</li>
         </ul>
-        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/H102363171G" target="_blank" rel="noopener" aria-label="Abrir Simulador de Investimentos">Acessar o Simulador <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/H102363171G" target="_blank" rel="noopener">Acessar o Simulador <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
       <div class="preview" aria-hidden="true">
         <div class="gridlines"></div>
@@ -263,62 +230,58 @@
       </div>
     </section>
 
-    <!-- Controle de Projetos (NOVO) -->
+    <!-- Controle de Projetos -->
     <section id="projetos" class="grid" aria-labelledby="projetos-titulo">
       <div class="preview" aria-hidden="true">
         <div class="gridlines"></div>
         <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
       </div>
-      <div class="card novo">
-        <h2 id="projetos-titulo" class="title">Controle de Projetos <span class="badge-novo">NOVO</span></h2>
+      <div class="card">
+        <h2 id="projetos-titulo" class="title">Planilha de Projetos</h2>
         <p class="desc">Gerencie prazos, progresso e entregas com eficiência total. Visualize o andamento de cada projeto em um dashboard automático e mantenha tudo sob controle com elegância.</p>
         <ul class="list">
           <li>Indicadores visuais de status e desempenho.</li>
           <li>Cálculos automáticos de progresso e prazos.</li>
           <li>Interface moderna e fácil de entender.</li>
         </ul>
-        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/A102611777M" target="_blank" rel="noopener" aria-label="Abrir Controle de Projetos">Organizar Projetos <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
+        <p style="margin-top:18px"><a class="cta" href="https://go.hotmart.com/A102611777M" target="_blank" rel="noopener">Organizar Projetos <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
       </div>
     </section>
 
     <footer>
-      Felipe Planilhas — © 2025. Todos os direitos reservados.<br>
-      <a href="https://youtube.com/@felipe_planilhas?si=yIidOXHHFPjpqOne" target="_blank" rel="noopener noreferrer">YouTube</a> · 
-      <a href="https://www.instagram.com/felipe_planilhas" target="_blank" rel="noopener noreferrer">Instagram</a>
+      felipe_planilhas — © 2025. Todos os direitos reservados.<br>
+      <a href="https://youtube.com/@felipe_planilhas?si=yIidOXHHFPjpqOne" target="_blank" rel="noopener">YouTube</a> ·
+      <a href="https://www.instagram.com/felipe_planilhas" target="_blank" rel="noopener">Instagram</a>
     </footer>
   </main>
 
   <script>
     // Intersection Observer para revelar elementos ao rolar
-    const io = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); }); }, { threshold: 0.18 });
-    document.querySelectorAll('.card, .preview, .chip').forEach(el => io.observe(el));
+    const io = new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting) entry.target.classList.add('is-visible');});},{threshold:0.18});
+    document.querySelectorAll('.card, .preview').forEach(el=>io.observe(el));
 
-    // Scroll spy simples para destacar link ativo no header
-    const sections = [
-      { id: '#pessoais', link: document.querySelector('a[href="#pessoais"]') },
-      { id: '#empresas', link: document.querySelector('a[href="#empresas"]') },
-      { id: '#mistas', link: document.querySelector('a[href="#mistas"]') },
-      { id: '#controle-2025', link: null },
-      { id: '#assinaturas', link: null },
-      { id: '#sonhos', link: null },
-      { id: '#empresarial', link: null },
-      { id: '#simulador', link: null },
-      { id: '#projetos', link: null }
+    // Scroll spy simples para destacar link ativo no header (categorias)
+    const sections=[
+      {id:'#pessoais', link:document.querySelector('a[href="#pessoais"]')},
+      {id:'#empresas', link:document.querySelector('a[href="#empresas"]')},
+      {id:'#mistas', link:document.querySelector('a[href="#mistas"]')}
     ];
-
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const item = sections.find(s => s.id === '#' + entry.target.id);
-        if (!item || !item.link) return;
-        if (entry.isIntersecting) {
-          sections.forEach(s => s.link && s.link.classList.remove('active'));
-          item.link && item.link.classList.add('active');
-          item.link && item.link.setAttribute('aria-current', 'page');
+    const spy=new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{
+        const item=sections.find(s=>s.id==='#'+entry.target.id);
+        if(!item||!item.link) return;
+        if(entry.isIntersecting){
+          sections.forEach(s=>s.link&&s.link.classList.remove('active'));
+          item.link.classList.add('active');
+          item.link.setAttribute('aria-current','page');
         }
       });
-    }, { threshold: 0.35 });
-
-    sections.forEach(s => { const el = document.querySelector(s.id); if (el) spy.observe(el); });
+    },{threshold:0.35});
+    sections.forEach(s=>{const el=document.querySelector(s.id); if(el) spy.observe(el);});
+  </script>
+</body>
+</html>
+s => { const el = document.querySelector(s.id); if (el) spy.observe(el); });
   </script>
 </body>
 </html>
